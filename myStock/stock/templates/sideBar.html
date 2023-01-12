@@ -1,0 +1,49 @@
+{% load static %}
+<div class="brand-logo">
+			<a href="{% url 'dashboard'%}">
+				<img src="{% static '/vendors/images/black.png'%}" alt="" class="dark-logo">
+				<img src="{% static '/vendors/images/white.png'%}" alt="" class="light-logo">
+			</a>
+			<div class="close-sidebar" data-toggle="left-sidebar-close">
+				<i class="ion-close-round"></i>
+			</div>
+		</div>
+		<div class="menu-block customscroll">
+			<div class="sidebar-menu">
+				<ul id="accordion-menu">
+					<li>
+						<a href="{% url 'dashboard'%}" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-house-1"></span><span class="mtext">Dashboard</span>
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'users'%}" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-user"></span><span class="mtext">Users</span>
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'customer'%}" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-user"></span><span class="mtext">Customer</span>
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'product'%}" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-library"></span><span class="mtext">Product</span>
+						</a>
+					</li>
+					<li>
+						<a href="{% url 'sales'%}" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-right-arrow1"></span><span class="mtext">Sales</span>
+						</a>
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-apartment"></span><span class="mtext">Report</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="{% url 'salesummary'%}">Sales Report</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
