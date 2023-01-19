@@ -15,6 +15,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 	<!-- Google Font -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+	<!-- Google Font -->
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="{% static '/vendors/styles/core.css'%}">
@@ -126,56 +129,78 @@
 									<h4 class="modal-title" style="color:#00f!important" id="myLargeModalLabel">User Registration</h4>
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 								</div>
-								<form method="POST">
+								<h5></h5>
+								<form method="POST" id="frmCreateUser">
 									{%csrf_token%}
 									<div class="modal-body">
 										<div class="form-group row">
 											<label class="col-sm-12 col-md-2 col-form-label">First Name: </label>
 											<div class="col-sm-12 col-md-10">
-												<input class="form-control" name="fname" type="text" placeholder="First Name Here" required>
+												<input class="form-control" name="fname" id="fname" type="text" placeholder="First Name Here" required>
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-sm-12 col-md-2 col-form-label">Last Name:</label>
 											<div class="col-sm-12 col-md-10">
-												<input class="form-control" name="lname" placeholder="Last Name Here" type="text" required>
+												<input class="form-control" name="lname" id="lname" placeholder="Last Name Here" type="text" required>
 											</div>
 										</div>
 										
 										<div class="form-group row">
 											<label class="col-sm-12 col-md-2 col-form-label">Mobile:</label>
 											<div class="col-sm-12 col-md-10">
-												<input class="form-control" name="phone" type="tel" required>
+												<input class="form-control" name="phone" id="phone" type="tel" required>
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-sm-12 col-md-2 col-form-label">Email</label>
 											<div class="col-sm-12 col-md-10">
-												<input class="form-control" name="email" type="email" required>
+												<input class="form-control" name="email" id="email" type="email" required>
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-sm-12 col-md-2 col-form-label">UserName:</label>
 											<div class="col-sm-12 col-md-10">
-												<input class="form-control" name="username" placeholder="UserName Here" type="text" required>
+												<input class="form-control" name="username" id="username" placeholder="UserName Here" type="text" required>
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-sm-12 col-md-2 col-form-label">Password:</label>
 											<div class="col-sm-12 col-md-10">
-												<input class="form-control" name="password" placeholder="Password Here" type="password" required>
+												<input class="form-control" name="password" id="password" placeholder="Password Here" type="password" required>
 											</div>
 										</div>
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-										<button type="submit" name="addUser"  class="btn btn-primary">Register</button>
+										<button type="submit" name="submit"  class="btn btn-primary">Register</button>
 									</div>
 								</form>
 							</div>
 						</div>
 					</div>
 					</div>
+					<script type="text/javascript">
+						$(document).on('submit','#frmCreateUser',function(e){
+							e.preventDefault();
+							$.ajax({
+								type: 'POST',
+								url: '/users',
+								data: {
+									fname: $('#fname').val(),
+									lname: $('#fname').val(),
+									mobile: $('#mobile').val(),
+									email: $('#email').val(),
+									username: $('#username').val(),
+									password: $('#password').val(),
+									csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+								},
+								success: function(data){
+									("h5").html(data)
+								}
+								})
+							})
+					</script>
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				{%include 'footer.html'%}
@@ -184,6 +209,7 @@
 	</div>
 	<!-- js -->
 	<script src="{% static '/vendors/scripts/core.js'%}"></script>
+	<script src="{% static '/vendors/scripts/jquery.min.js'%}"></script>
 	<script src="{% static '/vendors/scripts/script.min.js'%}"></script>
 	<script src="{% static '/vendors/scripts/process.js'%}"></script>
 	<script src="{% static '/vendors/scripts/layout-settings.js'%}"></script>

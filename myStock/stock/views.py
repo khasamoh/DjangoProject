@@ -1,4 +1,6 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
+from .models import Product,Customer
+from .forms import ProductForm
 from django.http import HttpResponse
 from stock.models import *
 
@@ -29,7 +31,9 @@ def insert_user(request):
         password = request.POST['password']
         data = User(fname=fname,lname=lname,phone=phone,email=email,username=username,password=password)
         data.save()
-        return redirect('/')
+        success = 'User Created'+fname
+        return HttpResponse(success)
+        #return redirect('/')
     else:
         return render(request,'users.html')
     
@@ -66,3 +70,17 @@ def insert_product(request):
         
     else:
         return render(request,'pruduct.html')
+    
+# Insert Product
+def create(request):
+    form = ProductForm(request.POST)
+
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+            return redirect ('product')
+    form = ProductForm()
+    context = {
+        "form":form
+    }
+    return render(request, 'stock/product.html', context)
