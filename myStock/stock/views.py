@@ -8,7 +8,11 @@ from stock.models import *
 def index(request):
     return render(request,'index.html')
 def dashboard(request):
-    return render(request,'dashboard.html')
+    Products = Product.objects.all
+    context = {
+         "Products" : Products
+    }
+    return render(request,'dashboard.html',context)
 def product(request):
     return render(request,'product.html')
 def users(request):
@@ -16,9 +20,17 @@ def users(request):
 def customer(request):
     return render(request,'customer.html')
 def sales(request):
-    return render(request,'sales.html')
+    Products = Product.objects.all
+    context = {
+         "Products" : Products
+    }
+    return render(request,'sales.html',context)
 def salesummary(request):
-    return render(request,'salesummary.html')
+    Products = Product.objects.all
+    context = {
+         "Products" : Products
+    }
+    return render(request,'salesummary.html',context)
 
 # Insert user
 def insert_user(request):
@@ -73,14 +85,15 @@ def insert_product(request):
     
 # Insert Product
 def create(request):
+    Products = Product.objects.all
     form = ProductForm(request.POST)
-
     if request.method == "POST":
         if form.is_valid():
             form.save()
             return redirect ('product')
-    form = ProductForm()
+        form = ProductForm()
     context = {
-        "form":form
+        "form":form,
+         "Products" : Products
     }
-    return render(request, 'stock/product.html', context)
+    return render(request, 'product.html', context)

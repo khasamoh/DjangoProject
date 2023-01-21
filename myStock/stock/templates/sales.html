@@ -58,7 +58,7 @@
 							</div>
 							<nav aria-label="breadcrumb" role="navigation">
 								<ol class="breadcrumb">
-									<li class="breadcrumb-item"><a href="Dashboard.php">Home</a></li>
+									<li class="breadcrumb-item"><a href="">Home</a></li>
 									<li class="breadcrumb-item active" aria-current="page">Sales</li>
 								</ol>
 							</nav>
@@ -82,8 +82,10 @@
                                 <div class="form-group">
                                     <p class="mb-0">Choose Product to Sale</p>
                                     <select class="custom-select2 form-control" name="product" style="width: 100%; height: 38px;">
-                                    
 										<!-- select product for choice-->
+										{% for Product in Products %}
+										<option>{{ Product.productName }}</option>
+										{% endfor %}
                                     </select>
                                 </div>
 							</div>
@@ -122,11 +124,22 @@
 							</thead>
 							<tbody>
 								<!-- view sales End -->
+								{% for Product in Products %}
+									<tr>
+										<td>{{ Product.productName }}</td>
+										<td>TODO</td>
+										<td>{{ Product.quantity }}</td>
+										<td>TODO</td>
+										<td>TODO</td>
+										<td><a href="" style="color:blue;font-size:18">Edit</a></td>
+										
+									  </tr>
+								{% endfor %}
 							</tbody>
 							<div class="row">
-								<div class="col-md-6"><h6 style="color:#c0c011;float:right;"><span style="color:blue">TOTAL AMOUNT = </span> <?php echo $total;?></h6></div>
+								<div class="col-md-6"><h6 style="color:#c0c011;float:right;"><span style="color:blue">TOTAL AMOUNT = </span> TODO</h6></div>
 								<div class="col-md-6">
-										<h6 style="color:green;float:left;"><span style="color:blue">TOTAL PROFIT = </span> <?php echo $TotalProfit;?></h6>
+										<h6 style="color:green;float:left;"><span style="color:blue">TOTAL PROFIT = </span> TODO</h6>
 								</div>
 							</div>
 						</table>

@@ -90,11 +90,22 @@
 							</thead>
 							<tbody>
 								<!--todo-->
+								{% for Product in Products %}
+									<tr>
+										<td>{{ Product.productName }}</td>
+										<td>TODO</td>
+										<td>{{ Product.quantity }}</td>
+										<td>TODO</td>
+										<td>TODO</td>
+										<td><a href="" style="color:blue;font-size:18">Edit</a></td>
+										
+									  </tr>
+								{% endfor %}
 							</tbody>
 							<div class="row">
-								<div class="col-md-6"><h6 style="color:#c0c011;float:right;"><span style="color:blue">TOTAL AMOUNT = </span> <?php echo $total;?></h6></div>
+								<div class="col-md-6"><h6 style="color:#c0c011;float:right;"><span style="color:blue">TOTAL AMOUNT = </span> TODO</h6></div>
 								<div class="col-md-6">
-										<h6 style="color:green;float:left;"><span style="color:blue">TOTAL PROFIT = </span> <?php echo $TotalProfit;?></h6>
+										<h6 style="color:green;float:left;"><span style="color:blue">TOTAL PROFIT = </span> TODO</h6>
 								</div>
 							</div>
 						</table>
@@ -106,7 +117,7 @@
 					<div class="pd-20">
 						<h4 class="text-blue h4">Low Stock Products</h4>
 						<ul class="list-group">
-							<?php $call->LowStockProduct();?>	
+
 							</ul>
                     </div>
 				</div>
