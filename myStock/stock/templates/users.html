@@ -100,20 +100,15 @@
 							</thead>
 							<tbody>
 								<!-- view Users -->
-								{% for i in User %}
-								<tr>
-									<td>{{i.fname}}</td>
-									<td>{{i.lname}}</td>
-									<td>{{i.email}}</td>
-									<td>{{i.phone}}</td>
-									<td>{{i.username}}</td>
-									<!--<td>
-										<a href="/edit/{{employee.pk}}">Update</a>
-									</td>
-									<td>
-										<a href="/remove/{{employee.pk}}">Delete</a>
-									</td>-->
-								</tr>
+								{% for User in Users %}
+									<tr>
+										<td>{{User.fname}}</td>
+										<td>{{User.lname}}</td>
+										<td>{{User.email}}</td>
+										<td>{{User.phone}}</td>
+										<td>{{User.username}}</td>
+										<td><a href="" style="color:blue;font-size:18">Edit</a></td>
+									  </tr>
 								{% endfor %}
 							</tbody>
 						</table>
@@ -130,77 +125,57 @@
 									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 								</div>
 								<h5></h5>
-								<form method="POST" id="frmCreateUser">
-									{%csrf_token%}
+								{% load crispy_forms_tags %}
+								<form method="POST" action="">
+									{% csrf_token %}
 									<div class="modal-body">
 										<div class="form-group row">
 											<label class="col-sm-12 col-md-2 col-form-label">First Name: </label>
 											<div class="col-sm-12 col-md-10">
-												<input class="form-control" name="fname" id="fname" type="text" placeholder="First Name Here" required>
+												{{form.Fname}}
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-sm-12 col-md-2 col-form-label">Last Name:</label>
 											<div class="col-sm-12 col-md-10">
-												<input class="form-control" name="lname" id="lname" placeholder="Last Name Here" type="text" required>
+												{{form.Lname}}
 											</div>
 										</div>
 										
 										<div class="form-group row">
 											<label class="col-sm-12 col-md-2 col-form-label">Mobile:</label>
 											<div class="col-sm-12 col-md-10">
-												<input class="form-control" name="phone" id="phone" type="tel" required>
+												{{form.phone}}
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-sm-12 col-md-2 col-form-label">Email</label>
 											<div class="col-sm-12 col-md-10">
-												<input class="form-control" name="email" id="email" type="email" required>
+												{{form.email}}
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-sm-12 col-md-2 col-form-label">UserName:</label>
 											<div class="col-sm-12 col-md-10">
-												<input class="form-control" name="username" id="username" placeholder="UserName Here" type="text" required>
+												{{form.username}}
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-sm-12 col-md-2 col-form-label">Password:</label>
 											<div class="col-sm-12 col-md-10">
-												<input class="form-control" name="password" id="password" placeholder="Password Here" type="password" required>
+												{{form.password}}
 											</div>
 										</div>
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-										<button type="submit" name="submit"  class="btn btn-primary">Register</button>
+										<button type="submit"   class="btn btn-primary">Register</button>
 									</div>
 								</form>
 							</div>
 						</div>
 					</div>
 					</div>
-					<script type="text/javascript">
-						$(document).on('submit','#frmCreateUser',function(e){
-							e.preventDefault();
-							$.ajax({
-								type: 'POST',
-								url: '/users',
-								data: {
-									fname: $('#fname').val(),
-									lname: $('#fname').val(),
-									mobile: $('#mobile').val(),
-									email: $('#email').val(),
-									username: $('#username').val(),
-									password: $('#password').val(),
-									csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
-								},
-								success: function(data){
-									("h5").html(data)
-								}
-								})
-							})
-					</script>
 			</div>
 			<div class="footer-wrap pd-20 mb-20 card-box">
 				{%include 'footer.html'%}

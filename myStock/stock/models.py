@@ -1,16 +1,17 @@
 from django.db import models
 
 # Create your models here.
-'''class User(models.Model):
+class User(models.Model):
     fname = models.CharField(max_length=30)
     lname = models.CharField(max_length=30)
     email = models.EmailField()
     phone = models.CharField(max_length=20)
     username = models.CharField(max_length=30)
     password = models.CharField(max_length=100)
-    class Meta:
-        db_table="User"
-'''     
+    
+    def __str__(self):
+        return self.fname
+    
 class Product(models.Model):
     productName = models.CharField(max_length=50)
     buyPrice = models.IntegerField()
@@ -26,6 +27,7 @@ class Customer(models.Model):
     gender = models.CharField(max_length=6)
     address = models.CharField(max_length=30)
     phone = models.CharField(max_length=20)
+    
     def __str__(self):
         return self.fname
         

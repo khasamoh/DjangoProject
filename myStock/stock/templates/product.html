@@ -75,7 +75,7 @@
 				{% block content %}
 				<!-- Simple Datatable start -->
 				<div class="card-box mb-30">
-					{% load crispy_forms_tags %}
+					
 					<div class="pd-20">
 						<h4 class="text-blue h4">List Of Products</h4>
 						<p  class="mb-0">You can add another >>> <a class="text-primary btn btn-success" style="color:white!important" data-toggle="modal" data-target="#AddProduct" type="button">Add New</a></p>
@@ -93,7 +93,6 @@
 							</thead>
 							<tbody>
 								<!-- view Product -->
-								
 								{% for Product in Products %}
 									<tr>
 										<td>{{ Product.productName }}</td>
@@ -125,28 +124,25 @@
 											<label class="col-sm-12 col-md-2 col-form-label">Product Name: </label>
 											<div class="col-sm-12 col-md-10">
 												{{form.productName}}
-												<!--<input class="form-control" name="Pname" type="text" placeholder="Product Name Here" required>-->
+												
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-sm-12 col-md-2 col-form-label">Buy Price:</label>
 											<div class="col-sm-12 col-md-10">
 												{{form.buyPrice}}
-												<!--<input class="form-control" name="Buyprice" placeholder="Buy Price Here" min="1" type="number" required>-->
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-sm-12 col-md-2 col-form-label">Sale Price:</label>
 											<div class="col-sm-12 col-md-10">
 												{{form.salePrice}}
-												<!--<input class="form-control" name="Saleprice" placeholder="Sale Price Here" min="1" type="number" required>-->
 											</div>
 										</div>
 										<div class="form-group row">
 											<label class="col-sm-12 col-md-2 col-form-label">Quantity:</label>
 											<div class="col-sm-12 col-md-10">
 												{{form.quantity}}
-												<!--<input class="form-control" min="1" name="quantity" placeholder="Quantity Here" type="number" required>-->
 											</div>
 										</div>
 									</div>
